@@ -57,7 +57,7 @@ function WaitList() {
 
           // Delay navigation to the success page
           setTimeout(() => {
-            navigate("/waitlist/success");
+            navigate("/success");
           }, 3000);
         }
       } catch (error) {

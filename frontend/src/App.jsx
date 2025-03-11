@@ -20,10 +20,10 @@ function App() {
         </SignedIn>
       </header> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/s/:id" element={<ChatPage />} />
-        <Route path="/waitlist" element={<WaitList />} /> 
-        <Route path="/waitlist/success" element={<WaitListSuccess />} />
+        {/* <Route path="/" element={<Home />} />
+        <Route path="/s/:id" element={<ChatPage />} /> */}
+        <Route path="/" element={<WaitList />} /> 
+        <Route path="/success" element={<WaitListSuccess />} />
       </Routes>
     </>
   );
