@@ -97,7 +97,7 @@ function WaitList() {
   const handleTwitterShare = () => {
     const twitterText =
       "Get early access to LetsGo.ai, your personal AI event concierge. Sign up now!";
-    const twitterUrl = "https://letsgo.ai"; // Replace with your actual website URL
+    const twitterUrl = "https://consergio-waitlist.vercel.app/"; // Replace with your actual website URL
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterText
     )}&url=${encodeURIComponent(twitterUrl)}`;
