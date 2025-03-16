@@ -33,67 +33,6 @@ function WaitList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (email) {
-    //   setIsSubmitting(true);
-    //   try {
-    //     await new Promise((resolve) => setTimeout(resolve, 1000));
-    //     const response = await axios.post(
-    //       `${import.meta.env.VITE_BASE_URL}/api/waitlist/register`,
-    //       {
-    //         email,
-    //       }
-    //     );
-
-    //     if (response.status === 200) {
-    //       setIsSubmitted(true);
-    //       toast.success("Email registered successfully!", {
-    //         position: "top-right",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: "light",
-    //       });
-
-    //       // Delay navigation to the success page
-    //       setTimeout(() => {
-    //         navigate("/pending");
-    //       }, 3000);
-    //     }
-    //   } catch (error) {
-    //     // Handle duplicate email or other errors
-    //     if (error.response && error.response.status === 400) {
-    //       toast.warning("Email is already registered", {
-    //         position: "top-right",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: "light",
-    //       });
-    //     } else {
-    //       toast.error("Registration failed. Please try again.", {
-    //         position: "top-right",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: "light",
-    //       });
-    //     }
-    //   } finally {
-    //     // Re-enable the button only if not successful
-    //     if (!isSubmitted) {
-    //       setIsSubmitting(false);
-    //     }
-    //   }
-    // }
     if (email) {
       setIsSubmitted(true);
 
@@ -102,7 +41,6 @@ function WaitList() {
         state: {
           email,
           firstName,
-          lastName,
         },
       });
     }
@@ -179,11 +117,11 @@ function WaitList() {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
-              className="w-1/2 px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              className="w-full px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
               required
               disabled={isSubmitting}
             />
-            <input
+            {/* <input
               data-aos="fade-left"
               data-aos-duration="2000"
               type="text"
@@ -193,7 +131,7 @@ function WaitList() {
               className="w-1/2 px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
               required
               disabled={isSubmitting}
-            />
+            /> */}
           </div>
           <input
             data-aos="fade-right"

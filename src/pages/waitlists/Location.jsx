@@ -17,7 +17,7 @@ function Location() {
   // const router = useRouter()
   const navigate = useNavigate();
   const location = useLocation();
-  const { email, firstName, lastName } = location.state || {};
+  const { email, firstName } = location.state || {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -34,14 +34,14 @@ function Location() {
   const [usStates, setUSStates] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [usCities, setUSCities] = useState([]);
-  const [selectedCity, setSelectedCity] = useState("");
+  // const [selectedCity, setSelectedCity] = useState("");
 
   // Non-US fields
   const [selectedCountry, setSelectedCountry] = useState("");
   const [nonUSStates, setNonUSStates] = useState([]);
   const [selectedNonUSState, setSelectedNonUSState] = useState("");
   const [nonUSCities, setNonUSCities] = useState([]);
-  const [selectedNonUSCity, setSelectedNonUSCity] = useState("");
+  // const [selectedNonUSCity, setSelectedNonUSCity] = useState("");
 
   // Helper function to convert country code to flag emoji
   const getFlagEmoji = (countryCode) => {
@@ -101,25 +101,25 @@ function Location() {
   }, [navigate]);
 
   // Update cities when US state changes
-  useEffect(() => {
-    if (selectedState) {
-      try {
-        const cities = City.getCitiesOfState("US", selectedState).map(
-          (city) => ({
-            value: city.name,
-            label: city.name,
-          })
-        );
-        setUSCities(cities);
-      } catch (error) {
-        console.error("Error loading US cities:", error);
-        setUSCities([]);
-      }
-    } else {
-      setUSCities([]);
-    }
-    setSelectedCity("");
-  }, [selectedState]);
+  // useEffect(() => {
+  //   if (selectedState) {
+  //     try {
+  //       const cities = City.getCitiesOfState("US", selectedState).map(
+  //         (city) => ({
+  //           value: city.name,
+  //           label: city.name,
+  //         })
+  //       );
+  //       setUSCities(cities);
+  //     } catch (error) {
+  //       console.error("Error loading US cities:", error);
+  //       setUSCities([]);
+  //     }
+  //   } else {
+  //     setUSCities([]);
+  //   }
+  //   setSelectedCity("");
+  // }, [selectedState]);
 
   // Update states when non-US country changes
   useEffect(() => {
@@ -140,31 +140,31 @@ function Location() {
       setNonUSStates([]);
     }
     setSelectedNonUSState("");
-    setNonUSCities([]);
-    setSelectedNonUSCity("");
+    // setNonUSCities([]);
+    // setSelectedNonUSCity("");
   }, [selectedCountry]);
 
   // Update cities when non-US state changes
-  useEffect(() => {
-    if (selectedCountry && selectedNonUSState) {
-      try {
-        const cities = City.getCitiesOfState(
-          selectedCountry,
-          selectedNonUSState
-        ).map((city) => ({
-          value: city.name,
-          label: city.name,
-        }));
-        setNonUSCities(cities);
-      } catch (error) {
-        console.error("Error loading cities:", error);
-        setNonUSCities([]);
-      }
-    } else {
-      setNonUSCities([]);
-    }
-    setSelectedNonUSCity("");
-  }, [selectedCountry, selectedNonUSState]);
+  // useEffect(() => {
+  //   if (selectedCountry && selectedNonUSState) {
+  //     try {
+  //       const cities = City.getCitiesOfState(
+  //         selectedCountry,
+  //         selectedNonUSState
+  //       ).map((city) => ({
+  //         value: city.name,
+  //         label: city.name,
+  //       }));
+  //       setNonUSCities(cities);
+  //     } catch (error) {
+  //       console.error("Error loading cities:", error);
+  //       setNonUSCities([]);
+  //     }
+  //   } else {
+  //     setNonUSCities([]);
+  //   }
+  //   setSelectedNonUSCity("");
+  // }, [selectedCountry, selectedNonUSState]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -179,10 +179,8 @@ function Location() {
       locationData = {
         email: email,
         firstName: firstName,
-        lastName: lastName,
         country: "United States",
         state: state?.label || "",
-        city: selectedCity,
       };
     } else {
       const country = countries.find((c) => c.value === selectedCountry);
@@ -191,10 +189,8 @@ function Location() {
       locationData = {
         email: email,
         firstName: firstName,
-        lastName: lastName,
         country: country?.label || "",
         state: state?.label || "",
-        city: selectedNonUSCity,
       };
     }
 
@@ -282,10 +278,9 @@ function Location() {
 
   // Check if form is valid
   const isFormValid = isUS
-    ? selectedState && selectedCity
+    ? selectedState
     : selectedCountry &&
-      (nonUSStates.length === 0 || selectedNonUSState) &&
-      (nonUSCities.length === 0 || selectedNonUSCity);
+      (nonUSStates.length === 0 || selectedNonUSState)
 
   return (
     <div className="min-h-screen w-[100vw] flex flex-col items-center bg-gradient-to-b from-[#FFFFFF] to-[#FCE5D8] sm:pt-28 pt-20">
@@ -300,8 +295,12 @@ function Location() {
           experience
         </div>
 
-        <form data-aos="fade-up"
-          data-aos-duration="1000" onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6"
+        >
           <div className="space-y-6">
             <Label className="text-center text-lg font-medium text-black font-serif leading-6">
               Are you located in the United States?
@@ -333,7 +332,7 @@ function Location() {
                 required
               />
 
-              {selectedState &&
+              {/* {selectedState &&
                 (usCities.length > 0 ? (
                   <CustomSelect
                     label="City"
@@ -354,7 +353,7 @@ function Location() {
                       required
                     />
                   </div>
-                ))}
+                ))} */}
             </div>
           ) : (
             <div className="space-y-4">
@@ -378,7 +377,7 @@ function Location() {
                 />
               )}
 
-              {selectedCountry &&
+              {/* {selectedCountry &&
                 (nonUSStates.length === 0 || selectedNonUSState) &&
                 (nonUSCities.length > 0 ? (
                   <CustomSelect
@@ -400,7 +399,7 @@ function Location() {
                       required
                     />
                   </div>
-                ))}
+                ))} */}
             </div>
           )}
 
