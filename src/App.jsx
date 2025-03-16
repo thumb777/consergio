@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ChatPage from "./pages/Chat";
 import WaitList from "./pages/waitlists/WaitList";
+import Location from "./pages/waitlists/Location";
 import WaitListSuccess from "./pages/waitlists/Success";
 
 
@@ -23,6 +24,7 @@ function App() {
         {/* <Route path="/" element={<Home />} />
         <Route path="/s/:id" element={<ChatPage />} /> */}
         <Route path="/" element={<WaitList />} /> 
+        <Route path="/pending" element={<Location />} /> 
         <Route path="/success" element={<WaitListSuccess />} />
       </Routes>
     </>

@@ -11,9 +11,15 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.24.1",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
     "@react-oauth/google": "^0.12.1",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "country-state-city": "^3.2.1",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.4.2",
     "google-auth-library": "^9.15.1",
@@ -23,7 +29,9 @@
     "react-dom": "^18.3.1",
     "react-modal-sheet": "^4.0.1",
     "react-router-dom": "^7.1.5",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

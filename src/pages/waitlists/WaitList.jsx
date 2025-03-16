@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css"; // Import react-toastify styles
 
 function WaitList() {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,66 +33,78 @@ function WaitList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if (email) {
+    //   setIsSubmitting(true);
+    //   try {
+    //     await new Promise((resolve) => setTimeout(resolve, 1000));
+    //     const response = await axios.post(
+    //       `${import.meta.env.VITE_BASE_URL}/api/waitlist/register`,
+    //       {
+    //         email,
+    //       }
+    //     );
+
+    //     if (response.status === 200) {
+    //       setIsSubmitted(true);
+    //       toast.success("Email registered successfully!", {
+    //         position: "top-right",
+    //         autoClose: 3000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //       });
+
+    //       // Delay navigation to the success page
+    //       setTimeout(() => {
+    //         navigate("/pending");
+    //       }, 3000);
+    //     }
+    //   } catch (error) {
+    //     // Handle duplicate email or other errors
+    //     if (error.response && error.response.status === 400) {
+    //       toast.warning("Email is already registered", {
+    //         position: "top-right",
+    //         autoClose: 3000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //       });
+    //     } else {
+    //       toast.error("Registration failed. Please try again.", {
+    //         position: "top-right",
+    //         autoClose: 3000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //       });
+    //     }
+    //   } finally {
+    //     // Re-enable the button only if not successful
+    //     if (!isSubmitted) {
+    //       setIsSubmitting(false);
+    //     }
+    //   }
+    // }
     if (email) {
-      setIsSubmitting(true);
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        const response = await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/api/waitlist/register`,
-          {
-            email,
-          }
-        );
+      setIsSubmitted(true);
 
-        if (response.status === 200) {
-          setIsSubmitted(true);
-          toast.success("Email registered successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-
-          // Delay navigation to the success page
-          setTimeout(() => {
-            navigate("/success");
-          }, 3000);
-        }
-      } catch (error) {
-        // Handle duplicate email or other errors
-        if (error.response && error.response.status === 400) {
-          toast.warning("Email is already registered", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        } else {
-          toast.error("Registration failed. Please try again.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }
-      } finally {
-        // Re-enable the button only if not successful
-        if (!isSubmitted) {
-          setIsSubmitting(false);
-        }
-      }
+      // Navigate to the pending page with state
+      navigate("/pending", {
+        state: {
+          email,
+          firstName,
+          lastName,
+        },
+      });
     }
   };
 
@@ -141,7 +155,7 @@ function WaitList() {
   }
 
   return (
-    <div className="min-h-screen w-[100vw] flex flex-col items-center bg-gradient-to-b from-[#FFFFFF] to-[#FCE5D8] pt-28">
+    <div className="min-h-screen w-[100vw] flex flex-col items-center bg-gradient-to-b from-[#FFFFFF] to-[#FCE5D8] sm:pt-28 pt-20">
       <ToastContainer />
       {/* Add ToastContainer to enable toast notifications */}
       <div className="w-full h-full flex flex-col items-center justify-center">
@@ -155,8 +169,32 @@ function WaitList() {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="  space-y-4 w-[90%] max-w-[400px]"
+          className="flex flex-col space-y-4 w-[90%] max-w-[400px]"
         >
+          <div className="w-full flex gap-4">
+            <input
+              data-aos="fade-left"
+              data-aos-duration="2000"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="First Name"
+              className="w-1/2 px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              required
+              disabled={isSubmitting}
+            />
+            <input
+              data-aos="fade-left"
+              data-aos-duration="2000"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Last Name"
+              className="w-1/2 px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
           <input
             data-aos="fade-right"
             data-aos-duration="2000"
@@ -164,7 +202,7 @@ function WaitList() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            className="w-full px-6 py-4 rounded-full border-2 border-gray-100 text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+            className="w-full px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
             required
             disabled={isSubmitting}
           />
@@ -178,7 +216,7 @@ function WaitList() {
             {isSubmitting ? (
               <div className="loader"></div> // Circular animation
             ) : (
-              "Sign up"
+              "Continue"
             )}
           </button>
         </form>
