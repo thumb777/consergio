@@ -244,7 +244,7 @@
 
 .animate-border-gradient {
   --b: 2px;
-  --c: conic-gradient(from calc(var(--r3) + 180deg), #faa97b, transparent);
+  --c: conic-gradient(from calc(var(--r3) + 180deg), #facfb5, transparent);
   position: relative;
   transition: all 0.3s;
   transform: translateZ(0);
@@ -272,7 +272,7 @@
 
 .animate-border-gradientA {
   --b: 2px;
-  --c: conic-gradient(from calc(var(--r3) + 180deg), #faa97b, transparent);
+  --c: conic-gradient(from calc(var(--r3) + 180deg), #facfb5, transparent);
   position: relative;
   transition: all 0.3s;
   transform: translateZ(0);
