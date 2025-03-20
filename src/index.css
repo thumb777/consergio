@@ -198,3 +198,55 @@
     @apply bg-background text-foreground;
   }
 }
+
+@property --r3 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes circleRotating {
+  0% {
+    --r3: 0deg;
+  }
+
+  25% {
+    --r3: 90deg;
+  }
+
+  50% {
+    --r3: 180deg;
+  }
+
+  100% {
+    --r3: 360deg;
+  }
+}
+
+
+.animate-border-gradient {
+  --b: 2px;
+  --c: conic-gradient(from calc(var(--r3) + 180deg), #faa97b, transparent);
+  position: relative;
+  transition: all 0.3s;
+  transform: translateZ(0);
+  animation: circleRotating -0.64s linear 1.5s infinite;
+}
+
+.animate-border-gradient:before {
+  content: "";
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  inset: 0;
+  background: var(--c);
+  padding: var(--b);
+  border-radius: 44px;
+  -webkit-mask:
+    linear-gradient(#FFF 0 0) content-box,
+    linear-gradient(#FFF 0 0);
+  mask:
+    linear-gradient(#FFF 0 0) content-box,
+    linear-gradient(#FFF 0 0);
+  mask-composite: exclude;
+}

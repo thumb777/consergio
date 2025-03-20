@@ -109,10 +109,12 @@ function WaitList() {
           onSubmit={handleSubmit}
           className="flex flex-col space-y-4 w-[90%] max-w-[400px]"
         >
-          <div className="w-full flex gap-4">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="2000"
+            className="animate-border-gradient"
+          >
             <input
-              data-aos="fade-left"
-              data-aos-duration="2000"
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -133,17 +135,21 @@ function WaitList() {
               disabled={isSubmitting}
             /> */}
           </div>
-          <input
+          <div
             data-aos="fade-right"
             data-aos-duration="2000"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className="w-full px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
-            required
-            disabled={isSubmitting}
-          />
+            className="animate-border-gradient"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              className="w-full px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
           <button
             type="submit"
             disabled={isSubmitting} // Disable the button if submitting
