@@ -130,8 +130,6 @@
   }
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -188,8 +186,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -222,7 +218,6 @@
     --r3: 360deg;
   }
 }
-
 
 @keyframes circleRotatingA {
   0% {
@@ -269,7 +264,6 @@
   mask-composite: exclude;
 }
 
-
 .animate-border-gradientA {
   --b: 2px;
   --c: conic-gradient(from calc(var(--r3) + 180deg), #facfb5, transparent);
@@ -295,4 +289,19 @@
     linear-gradient(#FFF 0 0) content-box,
     linear-gradient(#FFF 0 0);
   mask-composite: exclude;
+}
+
+@keyframes neonGlow {
+  from {
+    box-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 9px #fac7a7, 0 0 12px #fac7a7 ;
+  }
+  to {
+    box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fac7a7, 0 0 4px #fac7a7;
+  }
+}
+
+.neon-input {
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  border: none;
+  outline: none;
 }

@@ -112,40 +112,29 @@ function WaitList() {
           <div
             data-aos="fade-left"
             data-aos-duration="2000"
-            className="animate-border-gradientA"
+            // className="animate-border-gradientA"
           >
             <input
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
-              className="w-full px-6 py-4 rounded-full text-lg  bg-white/80 focus:outline-none"
+              className="w-full px-4 py-3 rounded-full text-lg bg-white/80 focus:outline-none neon-input"
               required
               disabled={isSubmitting}
             />
-            {/* <input
-              data-aos="fade-left"
-              data-aos-duration="2000"
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name"
-              className="w-1/2 px-6 py-4 rounded-full border-2 border-[#704214]/25 drop-shadow-md text-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
-              required
-              disabled={isSubmitting}
-            /> */}
           </div>
           <div
             data-aos="fade-right"
             data-aos-duration="2000"
-            className="animate-border-gradient"
+            // className="animate-border-gradient"
           >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="w-full px-6 py-4 rounded-full text-lg  bg-white/80 focus:outline-none"
+              className="w-full px-4 py-3 rounded-full text-lg  bg-white/80 focus:outline-none neon-input"
               required
               disabled={isSubmitting}
             />
