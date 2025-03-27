@@ -27,7 +27,7 @@ function WaitListSuccess() {
   const handleTwitterShare = () => {
     const twitterText =
       `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`;
-    const twitterUrl = `${window.location.href}`; // Replace with your actual website URL
+      const twitterUrl = "https://x.com/letsgoevent"; // Replace with your actual website URL
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterText
     )}&url=${encodeURIComponent(twitterUrl)}`;
@@ -59,7 +59,7 @@ function WaitListSuccess() {
   };
 
   const handleFollowTwitter = () => {
-    const twitterProfileUrl = "https://twitter.com/"; // Replace 'yourTwitterHandle' with your actual Twitter username
+    const twitterProfileUrl = "https://x.com/letsgoevent"; // Replace 'yourTwitterHandle' with your actual Twitter username
     window.open(twitterProfileUrl, "_blank");
   };
 

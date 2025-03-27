@@ -48,7 +48,7 @@ function WaitList() {
 
   const handleTwitterShare = () => {
     const twitterText = `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`;
-    const twitterUrl = window.location.href; // Use the current URL
+    const twitterUrl = "https://x.com/letsgoevent"; // Use the current URL
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterText
     )}&url=${encodeURIComponent(twitterUrl)}`;
