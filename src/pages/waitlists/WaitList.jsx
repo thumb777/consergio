@@ -47,8 +47,7 @@ function WaitList() {
   };
 
   const handleTwitterShare = () => {
-    const twitterText =
-      `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`;
+    const twitterText = `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`;
     const twitterUrl = window.location.href; // Use the current URL
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterText
@@ -84,7 +83,7 @@ function WaitList() {
       <div className="min-h-screen w-[100vw] flex flex-col items-center bg-gradient-to-b from-[#FFFFFF] to-[#FCE5D8] justify-center">
         <div className="text-center w-fit p-4 space-y-4">
           <div className=" text-2xl font-serif">
-            {window.location.hostname} is launching soon!
+            {window.location.hostname.replace("www.", "")} is launching soon!
           </div>
           <div className="h-1 w-[95%] bg-gray-400 rounded-full overflow-hidden">
             <div className="h-full w-full loading-shimmer"></div>
@@ -104,8 +103,9 @@ function WaitList() {
           data-aos-duration="1000"
           className="text-center text-2xl font-serif leading-7 max-w-[400px] pb-12"
         >
-          {window.location.hostname} is launching soon! <br /> Sign up to get early access to
-          your personal AI event concierge.
+          {window.location.hostname.replace("www.", "")} is launching soon!{" "}
+          <br /> Sign up to get early access to your personal AI event
+          concierge.
         </div>
         <form
           onSubmit={handleSubmit}
