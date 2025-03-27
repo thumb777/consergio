@@ -26,8 +26,8 @@ function WaitListSuccess() {
 
   const handleTwitterShare = () => {
     const twitterText =
-      "Get early access to LetsGo.ai, your personal AI event concierge. Sign up now!";
-    const twitterUrl = "https://consergio-waitlist.vercel.app/"; // Replace with your actual website URL
+      `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`;
+    const twitterUrl = `${window.location.href}`; // Replace with your actual website URL
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       twitterText
     )}&url=${encodeURIComponent(twitterUrl)}`;
@@ -37,26 +37,29 @@ function WaitListSuccess() {
   };
 
   const handleShare = () => {
+    console.log("Share button clicked"); // Debugging log
     const shareData = {
-      title: "Join the Waitlist for LetsGo.ai!",
-      text: "Get early access to LetsGo.ai, your personal AI event concierge. Sign up now!",
-      url: window.location.href, // Use the current URL
+      title: `Join the Waitlist for ${window.location.href}!`,
+      text: `Get early access to ${window.location.href}, your personal AI event concierge. Sign up now!`,
+      url: window.location.href,
     };
 
-    // Check if the Web Share API is available
     if (navigator.share) {
       navigator
         .share(shareData)
-        .then(() => {})
+        .then(() => {
+          console.log("Share successful"); // Debugging log
+        })
         .catch((error) => {
           console.error("Error sharing:", error);
         });
     } else {
+      console.log("Web Share API not supported."); // This should log if unsupported
     }
   };
 
   const handleFollowTwitter = () => {
-    const twitterProfileUrl = "https://twitter.com/letsgoai"; // Replace 'yourTwitterHandle' with your actual Twitter username
+    const twitterProfileUrl = "https://twitter.com/"; // Replace 'yourTwitterHandle' with your actual Twitter username
     window.open(twitterProfileUrl, "_blank");
   };
 
@@ -110,7 +113,7 @@ function WaitListSuccess() {
         <a
           data-aos="fade-up"
           data-aos-duration="2000"
-          href="https://twitter.com/letsgoai"
+          href="https://twitter.com"
           className="w-full flex items-center justify-center gap-4 pb-12"
         >
           <img
