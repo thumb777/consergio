@@ -36,10 +36,8 @@ function AdminHome() {
   const [userToDelete, setUserToDelete] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
-  const [loginCredentials, setLoginCredentials] = useState({
-    username: "",
-    password: ""
-  });
+  const usernameRef = useRef();
+  const passwordRef = useRef();
 
   // Check authentication status on mount
   useEffect(() => {
@@ -216,9 +214,13 @@ function AdminHome() {
   const handleLogin = (e) => {
     e.preventDefault();
     
+    // Get values directly from the refs when form is submitted
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+    
     if (
-      loginCredentials.username === ADMIN_CREDENTIALS.username &&
-      loginCredentials.password === ADMIN_CREDENTIALS.password
+      username === ADMIN_CREDENTIALS.username &&
+      password === ADMIN_CREDENTIALS.password
     ) {
       setIsAuthenticated(true);
       setShowLoginDialog(false);
@@ -357,11 +359,7 @@ function AdminHome() {
             </label>
             <input
               type="text"
-              value={loginCredentials.username}
-              onChange={(e) => setLoginCredentials({
-                ...loginCredentials,
-                username: e.target.value
-              })}
+              ref={usernameRef}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
@@ -372,11 +370,7 @@ function AdminHome() {
             </label>
             <input
               type="password"
-              value={loginCredentials.password}
-              onChange={(e) => setLoginCredentials({
-                ...loginCredentials,
-                password: e.target.value
-              })}
+              ref={passwordRef}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
