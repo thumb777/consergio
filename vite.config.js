@@ -18,6 +18,19 @@ export default defineConfig({
     hmr: {
       clientPort: 5173,
     },
+    historyApiFallback: {
+      disableDotRule: true,
+      rewrites: [
+        { from: /^\/admin/, to: '/index.html' },
+        { from: /^\/pending/, to: '/index.html' },
+        { from: /^\/success/, to: '/index.html' },
+        { from: /./, to: '/index.html' }
+      ]
+    }
   },
+  preview: {
+    port: 5173,
+    historyApiFallback: true
+  }
 });
 
